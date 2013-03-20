@@ -4872,6 +4872,13 @@ let
     pulseaudioSupport = false; # better go through ALSA
   };
 
+  SDL2 = callPackage ../development/libraries/SDL2 {
+    openglSupport = mesaSupported;
+    alsaSupport = true;
+    x11Support = true;
+    pulseaudioSupport = false; # better go through ALSA
+  };
+
   SDL_gfx = callPackage ../development/libraries/SDL_gfx { };
 
   SDL_image = callPackage ../development/libraries/SDL_image { };
