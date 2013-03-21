@@ -3,6 +3,7 @@
 , alsaSupport ? true, alsaLib ? null
 , x11Support ? true, x11 ? null, libXrandr ? null
 , pulseaudioSupport ? true, pulseaudio ? null
+, wayland, libxkbcommon
 }:
 
 # OSS is no longer supported, for it's much crappier than ALSA and
@@ -19,6 +20,7 @@ let
         --disable-oss --disable-video-x11-xme
         --disable-x11-shared --disable-alsa-shared --enable-rpath --disable-pulseaudio-shared
         --disable-osmesa-shared --enable-static
+        --enable-video-wayland --enable-video-opengles
         ${if alsaSupport then "--with-alsa-prefix=${attrs.alsaLib}/lib" else ""}
       '';
 in
@@ -36,6 +38,7 @@ stdenv.mkDerivation rec {
     stdenv.lib.optional pulseaudioSupport pulseaudio;
 
   buildInputs = [ unzip pkgconfig audiofile ] ++
+    [ wayland libxkbcommon ] ++
     stdenv.lib.optional openglSupport [ mesa ] ++
     stdenv.lib.optional alsaSupport alsaLib;
 
