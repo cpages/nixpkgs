@@ -1,5 +1,6 @@
 { stdenv, fetchurl, pkgconfig, glib, atk, pango, cairo, perl, xlibs
 , gdk_pixbuf, xz, at_spi2_atk
+, wayland, libxkbcommon
 , xineramaSupport ? true
 , cupsSupport ? true, cups ? null
 }:
@@ -17,9 +18,12 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
+  configureFlags = "--enable-x11-backend --enable-wayland-backend";
+
   buildInputs = with xlibs; [
     pkgconfig glib atk pango gdk_pixbuf at_spi2_atk
     libXrandr libXrender libXcomposite libXi
+    wayland libxkbcommon
   ]
     ++ stdenv.lib.optional xineramaSupport xlibs.libXinerama
     ++ stdenv.lib.optionals cupsSupport [ cups ];
