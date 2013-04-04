@@ -139,7 +139,7 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
     haskellSrc   = self.haskellSrc_1_0_1_5;     # 7.6 ok
     html         = self.html_1_0_1_2;           # 7.6 ok
     HTTP         = self.HTTP_4000_2_8;          # 7.6 ok
-    HUnit        = self.HUnit_1_2_5_1;          # 7.6 ok
+    HUnit        = self.HUnit_1_2_5_2;          # 7.6 ok
     mtl          = self.mtl_2_1_2;              # 7.6 ok
     network      = self.network_2_4_1_2;        # 7.6 ok
     OpenGL       = self.OpenGL_2_8_0_0;         # 7.6 ok
@@ -703,6 +703,12 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
 
   dataDefault = callPackage ../development/libraries/haskell/data-default {};
 
+  dataDefaultClass = callPackage ../development/libraries/haskell/data-default-class {};
+  dataDefaultInstancesBase = callPackage ../development/libraries/haskell/data-default-instances-containers {};
+  dataDefaultInstancesContainers = callPackage ../development/libraries/haskell/data-default-instances-base {};
+  dataDefaultInstancesDlist = callPackage ../development/libraries/haskell/data-default-instances-dlist {};
+  dataDefaultInstancesOldLocale = callPackage ../development/libraries/haskell/data-default-instances-old-locale {};
+
   dataenc = callPackage ../development/libraries/haskell/dataenc {};
 
   dataInttrie = callPackage ../development/libraries/haskell/data-inttrie {};
@@ -1111,9 +1117,7 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
 
   hspec = callPackage ../development/libraries/haskell/hspec {};
 
-  hspecExpectations_0_3_0_3 = callPackage ../development/libraries/haskell/hspec-expectations/0.3.0.3.nix {};
-  hspecExpectations_0_3_2 = callPackage ../development/libraries/haskell/hspec-expectations/0.3.2.nix {};
-  hspecExpectations = self.hspecExpectations_0_3_0_3;
+  hspecExpectations = callPackage ../development/libraries/haskell/hspec-expectations {};
 
   hspecMeta = callPackage ../development/libraries/haskell/hspec-meta {};
 
@@ -1138,7 +1142,8 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
   HUnit_1_2_4_2 = callPackage ../development/libraries/haskell/HUnit/1.2.4.2.nix {};
   HUnit_1_2_4_3 = callPackage ../development/libraries/haskell/HUnit/1.2.4.3.nix {};
   HUnit_1_2_5_1 = callPackage ../development/libraries/haskell/HUnit/1.2.5.1.nix {};
-  HUnit = self.HUnit_1_2_5_1;
+  HUnit_1_2_5_2 = callPackage ../development/libraries/haskell/HUnit/1.2.5.2.nix {};
+  HUnit = self.HUnit_1_2_5_2;
 
   hxt = callPackage ../development/libraries/haskell/hxt {};
 
@@ -1354,6 +1359,7 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
   network = self.network_2_4_1_2;
 
   networkConduit = callPackage ../development/libraries/haskell/network-conduit {};
+  networkConduitTls = callPackage ../development/libraries/haskell/network-conduit-tls {};
 
   networkInfo = callPackage ../development/libraries/haskell/network-info {};
 
@@ -1514,6 +1520,8 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
   QuickCheck2 = self.QuickCheck_2_6;
   QuickCheck  = self.QuickCheck2;
 
+  quickcheckIo = callPackage ../development/libraries/haskell/quickcheck-io {};
+
   RangedSets = callPackage ../development/libraries/haskell/Ranged-sets {};
 
   random_1_0_1_1 = callPackage ../development/libraries/haskell/random/1.0.1.1.nix {};
@@ -1595,6 +1603,8 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
   safe = callPackage ../development/libraries/haskell/safe {};
 
   SafeSemaphore = callPackage ../development/libraries/haskell/SafeSemaphore {};
+
+  scotty = callPackage ../development/libraries/haskell/scotty {};
 
   sendfile = callPackage ../development/libraries/haskell/sendfile {};
 
@@ -1830,6 +1840,8 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
 
   unixCompat = callPackage ../development/libraries/haskell/unix-compat {};
 
+  unixProcessConduit = callPackage ../development/libraries/haskell/unix-process-conduit {};
+
   unixTime = callPackage ../development/libraries/haskell/unix-time {};
 
   unlambda = callPackage ../development/libraries/haskell/unlambda {};
@@ -1965,6 +1977,8 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
   yaml = callPackage ../development/libraries/haskell/yaml {};
 
   yap = callPackage ../development/libraries/haskell/yap {};
+
+  yeganesh = callPackage ../applications/misc/yeganesh {};
 
   yesod = callPackage ../development/libraries/haskell/yesod {};
 
@@ -2138,6 +2152,8 @@ let result = let callPackage = x : y : modifyPrio (newScope result.final x y);
   githubBackup = callPackage ../applications/version-management/git-and-tools/github-backup {};
 
   jailbreakCabal = callPackage ../development/tools/haskell/jailbreak-cabal {};
+
+  keter = callPackage ../development/tools/haskell/keter {};
 
   lhs2tex = callPackage ../tools/typesetting/lhs2tex {};
 
