@@ -1,19 +1,19 @@
-{stdenv, fetchurl, SDL} :
+{stdenv, fetchurl, cmake, SDL2} :
 
 stdenv.mkDerivation rec {
   name = "SDL_gfx-2.0.25";
 
   src = fetchurl {
-    url = "http://www.ferzkopp.net/Software/SDL_gfx-2.0/${name}.tar.gz";
-    sha256 = "1h2rj34dxi5xlwpvm293v2d91gsirhnpzlmnjns9xwkcdg0fsvjm";
+    url = "http://www.ferzkopp.net/Software/SDL_gfx-2.0/SDL_gfx-SDL2.tar.gz";
+    sha256 = "01slmb48l5dby7r6xy5ymyj768prapl4pywyg1ffqcw9w4nryv7p";
   };
 
-  buildInputs = [ SDL ] ;
+  buildInputs = [ cmake SDL2 ] ;
 
   configureFlags = "--disable-mmx";
 
   postInstall = ''
-    sed -i -e 's,"SDL.h",<SDL/SDL.h>,' \
+    sed -i -e 's,"SDL.h",<SDL2/SDL.h>,' \
       $out/include/SDL/*.h
     
     ln -s $out/include/SDL/*.h $out/include/;
