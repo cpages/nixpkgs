@@ -9481,8 +9481,10 @@ let
 
   steam = callPackage_i686 ../games/steam {};
 
-  steamChrootEnv = callPackage_i686 ../games/steam/chrootenv.nix {
-    zenity = gnome2.zenity;
+  steamChrootEnv = import ../games/steam/chrootenv.nix {
+    inherit buildFHSChrootEnv;
+    pkgs_i686 = pkgsi686Linux;
+    pkgs_x86_64 = pkgs;
   };
 
   stuntrally = callPackage ../games/stuntrally { };
