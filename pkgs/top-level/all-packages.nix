@@ -7416,6 +7416,8 @@ let
 
   xorg_sys_opengl = callPackage ../os-specific/linux/opengl/xorg-sys { };
 
+  xwiimote = callPackage ../os-specific/linux/xwiimote { };
+
   zd1211fw = callPackage ../os-specific/linux/firmware/zd1211 { };
 
 
