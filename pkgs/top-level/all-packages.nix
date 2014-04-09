@@ -10557,6 +10557,8 @@ let
 
   slock = callPackage ../misc/screensavers/slock { };
 
+  snes9x = callPackage ../misc/emulators/snes9x { };
+
   sourceAndTags = import ../misc/source-and-tags {
     inherit pkgs stdenv unzip lib ctags;
     hasktags = haskellPackages.hasktags;
