@@ -10423,6 +10423,10 @@ let
 
   hatari = callPackage ../misc/emulators/hatari { };
 
+  higan = callPackage ../misc/emulators/higan {
+    inherit (xlibs) libX11 libXext;
+  };
+
   hplip = callPackage ../misc/drivers/hplip { };
 
   # using the new configuration style proposal which is unstable
