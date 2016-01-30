@@ -14782,6 +14782,8 @@ let
 
     dfilemanager = callPackage ../applications/misc/dfilemanager { };
 
+    digikam = callPackage ../applications/graphics/digikam/5.x.nix { };
+
     fcitx-qt5 = callPackage ../tools/inputmethods/fcitx/fcitx-qt5.nix { };
 
     k9copy = callPackage ../applications/video/k9copy {};
