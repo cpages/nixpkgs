@@ -1,7 +1,7 @@
 { stdenv, callPackage, fetchFromGitHub
 , cmake, kodiPlain, libcec_platform, tinyxml, rapidxml
 , steam, udev, libusb1, jsoncpp, libhdhomerun, zlib
-, python2Packages, expat, glib, nspr, nss, openssl
+, python3Packages, expat, glib, nspr, nss, openssl
 , libssh, libarchive, lzma, bzip2, lz4, lzo }:
 
 with stdenv.lib;
@@ -9,7 +9,7 @@ with stdenv.lib;
 let self = rec {
 
   pluginDir = "/share/kodi/addons";
-  rel = "Leia";
+  rel = "Matrix";
 
   kodi = kodiPlain;
 
@@ -450,7 +450,7 @@ let self = rec {
     };
   };
 
-  yatp = python2Packages.toPythonModule (mkKodiPlugin rec {
+  yatp = python3Packages.toPythonModule (mkKodiPlugin rec {
     plugin = "yatp";
     namespace = "plugin.video.yatp";
     version = "3.3.2";
@@ -466,8 +466,8 @@ let self = rec {
 
     propagatedBuildInputs = [
       simpleplugin
-      python2Packages.requests
-      python2Packages.libtorrentRasterbar
+      python3Packages.requests
+      python3Packages.libtorrentRasterbar
     ];
 
     meta = {
