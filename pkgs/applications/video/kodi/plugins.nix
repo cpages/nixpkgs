@@ -121,6 +121,7 @@ let self = rec {
       '';
       platforms = platforms.all;
       maintainers = with maintainers; [ edwtjo ];
+      broken = true; # requires port to python3
     };
 
   };
@@ -150,6 +151,7 @@ let self = rec {
       '';
       platforms = platforms.all;
       maintainers = with maintainers; [ edwtjo ];
+      broken = true; # requires port to python3
     };
 
   };
@@ -203,6 +205,7 @@ let self = rec {
       homepage = "https://forum.kodi.tv/showthread.php?tid=258159";
       description = "A ROM launcher for Kodi that uses HyperSpin assets.";
       maintainers = with maintainers; [ edwtjo ];
+      broken = true; # requires port to python3
     };
   in {
     service = mkKodiPlugin {
@@ -255,6 +258,7 @@ let self = rec {
       homepage = src.meta.homepage;
       description = "Simpleplugin API";
       license = licenses.gpl3;
+      broken = true; # requires port to python3
     };
   };
 
@@ -283,6 +287,7 @@ let self = rec {
       '';
       platforms = platforms.all;
       maintainers = with maintainers; [ edwtjo ];
+      broken = true; # requires port to python3
     };
 
   };
@@ -355,6 +360,7 @@ let self = rec {
       homepage = "https://forum.kodi.tv/showthread.php?tid=187421";
       description = "A comic book reader";
       maintainers = with maintainers; [ edwtjo ];
+      broken = true; # requires port to python3
     };
   };
 
@@ -474,6 +480,7 @@ let self = rec {
       homepage = src.meta.homepage;
       description = "Yet Another Torrent Player: libtorrent-based torrent streaming for Kodi";
       license = licenses.gpl3;
+      broken = true; # requires port to python3
     };
   });
 
