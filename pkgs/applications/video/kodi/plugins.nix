@@ -1,5 +1,5 @@
 { stdenv, callPackage, fetchFromGitHub
-, cmake, kodiPlain, libcec_platform, tinyxml, rapidxml
+, cmake, kodiPlain, libcec_platform, tinyxml, pugixml
 , steam, udev, libusb1, jsoncpp, libhdhomerun, zlib
 , python3Packages, expat, glib, nspr, nss, openssl
 , libssh, libarchive, lzma, bzip2, lz4, lzo }:
@@ -414,13 +414,13 @@ let self = rec {
 
     plugin = "pvr-iptvsimple";
     namespace = "pvr.iptvsimple";
-    version = "3.5.7";
+    version = "7.0.0";
 
     src = fetchFromGitHub {
       owner = "kodi-pvr";
       repo = "pvr.iptvsimple";
       rev = "${version}-${rel}";
-      sha256 = "17znib7c491h2ii4gagxradh0jyvgga0d548gbk4yjj2nc9qqc6d";
+      sha256 = "00am3m435nvsag1az29f9qlrzrcrdd5fqlhjjjplc9i9rfsknd1c";
     };
 
     meta = {
@@ -431,7 +431,7 @@ let self = rec {
       license = licenses.gpl2Plus;
     };
 
-    extraBuildInputs = [ zlib rapidxml ];
+    extraBuildInputs = [ zlib pugixml ];
   };
 
   osmc-skin = mkKodiPlugin rec {
