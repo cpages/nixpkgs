@@ -1,5 +1,5 @@
 { stdenv, callPackage, fetchFromGitHub
-, cmake, kodiPlain, libcec_platform, tinyxml, pugixml
+, cmake, kodi-unwrapped, libcec_platform, tinyxml, pugixml
 , steam, udev, libusb1, jsoncpp, libhdhomerun, zlib
 , python3Packages, expat, glib, nspr, nss, openssl
 , libssh, libarchive, lzma, bzip2, lz4, lzo }:
@@ -11,7 +11,7 @@ let self = rec {
   pluginDir = "/share/kodi/addons";
   rel = "Matrix";
 
-  kodi = kodiPlain;
+  kodi = kodi-unwrapped;
 
   # Convert derivation to a kodi module. Stolen from ../../../top-level/python-packages.nix
   toKodiPlugin = drv: drv.overrideAttrs(oldAttrs: {
@@ -47,7 +47,7 @@ let self = rec {
       sha256 = "1r3gs3c6zczmm66qcxh9mr306clwb3p7ykzb70r3jv5jqggiz199";
     };
 
-    buildInputs = [ cmake kodiPlain libcec_platform tinyxml ];
+    buildInputs = [ cmake kodi-unwrapped libcec_platform tinyxml ];
   };
 
   mkKodiPlugin = { plugin, namespace, version, sourceDir ? null, ... }@args:
@@ -75,7 +75,7 @@ let self = rec {
 
     dontStrip = true;
 
-    buildInputs = [ cmake kodiPlain kodi-platform libcec_platform ]
+    buildInputs = [ cmake kodi-unwrapped kodi-platform libcec_platform ]
                ++ extraBuildInputs;
 
     inherit extraRuntimeDependencies;

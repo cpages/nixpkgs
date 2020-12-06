@@ -24911,29 +24911,33 @@ in
     gtk = gtk2;
   };
 
-  kodiPlain = callPackage ../applications/video/kodi { };
+  kodi-gbm-unwrapped = (callPackage ../applications/video/kodi {
+    gbmSupport = true;
+    waylandSupport = false;
+    x11Support = false;
+  }).overrideAttrs (oldAttrs: { pname = "kodi-gbm"; });
 
-  kodiPlainWayland = callPackage ../applications/video/kodi {
-    useWayland = true;
-  };
+  kodi-wayland-unwrapped = (callPackage ../applications/video/kodi {
+    gbmSupport = false;
+    waylandSupport = true;
+    x11Support = false;
+  }).overrideAttrs (oldAttrs: { pname = "kodi-wayland"; });
 
-  kodiGBM = callPackage ../applications/video/kodi {
-    useGbm = true;
-  };
+  kodi-x11-unwrapped = (callPackage ../applications/video/kodi {
+    gbmSupport = false;
+    waylandSupport = false;
+    x11Support = true;
+  }).overrideAttrs (oldAttrs: { pname = "kodi-x11"; });
+
+  kodi-unwrapped = kodi-x11-unwrapped;
 
   kodiPlugins = recurseIntoAttrs (callPackage ../applications/video/kodi/plugins.nix {});
 
-  kodi = wrapKodi {
-    kodi = kodiPlain;
-  };
+  kodi-gbm = wrapKodi { kodi = kodi-gbm-unwrapped; };
+  kodi-wayland = wrapKodi { kodi = kodi-wayland-unwrapped; };
+  kodi-x11 = wrapKodi { kodi = kodi-x11-unwrapped; };
 
-  kodi-wayland = wrapKodi {
-    kodi = kodiPlainWayland;
-  };
-
-  kodi-gbm = wrapKodi {
-    kodi = kodiGBM;
-  };
+  kodi = kodi-x11;
 
   kodi-cli = callPackage ../tools/misc/kodi-cli { };
 
