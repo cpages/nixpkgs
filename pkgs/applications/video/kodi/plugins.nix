@@ -368,13 +368,13 @@ let self = rec {
 
     plugin = "pvr-hts";
     namespace = "pvr.hts";
-    version = "8.1.1";
+    version = "8.2.2";
 
     src = fetchFromGitHub {
       owner = "kodi-pvr";
       repo = "pvr.hts";
       rev = "${version}-${rel}";
-      sha256 = "1h3ixjig1ckb5qjgxc3vl66h41825fwgp8pk7dc9n5ka7w02xk3w";
+      sha256 = "0jnn9gfjl556acqjf92wzzn371gxymhbbi665nqgg2gjcan0a49q";
     };
 
     meta = {

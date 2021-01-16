@@ -47,14 +47,14 @@ assert gbmSupport || waylandSupport || x11Support;
 
 let
   kodiReleaseDate = "20201207";
-  kodiVersion = "19.0b2";
+  kodiVersion = "19.0RC1";
   rel = "Matrix";
 
   kodi_src = fetchFromGitHub {
     owner  = "xbmc";
     repo   = "xbmc";
     rev    = "${kodiVersion}-${rel}";
-    sha256 = "0khhf44p92zkslbm5nph8zfknacazdlfpdrpcmllxhkx4m88pcfd";
+    sha256 = "048d1y8nj6fb7s2a1nqz84gwx99d3va3dcxa9sa8nrv2hhdwm013";
   };
 
   cmakeProto = fetchurl {
